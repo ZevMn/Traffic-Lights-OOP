@@ -13,6 +13,7 @@ class Time {
 
 		Time();
 
+		// Constructor
 		Time(int hours, int mins, int secs);
 		
 		void add(Time& anotherTime);
