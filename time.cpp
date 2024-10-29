@@ -26,7 +26,7 @@ class Time {
             int s2 = anotherTime.theSecs, m2 = anotherTime.theMins, h2 = anotherTime.theHour;
 
             theSecs = (s1+s2)%60;
-            theMins = (m1+m2((s1+s2)/60))%60;
+            theMins = (m1+m2+((s1+s2)/60))%60;
             theHour = (h1+h2+(m1+m2+(s1+s2)/60)/60)%24;
 
         }
