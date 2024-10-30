@@ -3,6 +3,7 @@
 #include <iostream>
 #include "time.h"
 
+
 using namespace std;
 
 /*********************** Time Class ***************************/
@@ -15,10 +16,10 @@ class Time {
 
 		// Constructor
 		Time(int hours, int mins, int secs);
-		
+
 		void add(Time& anotherTime) {
 			/* adds seconds to seconds, minutes to minutes and
-			hours to hours, taking into account that 
+			hours to hours, taking into account that
 			a day has 24 hours, an hour has 60 minutes
 			and a minute has 60 seconds */
 
@@ -28,9 +29,8 @@ class Time {
             theSecs = (s1+s2)%60;
             theMins = (m1+m2+((s1+s2)/60))%60;
             theHour = (h1+h2+(m1+m2+(s1+s2)/60)/60)%24;
-
         }
-	
+
 		friend std::ostream& operator << (std::ostream&, Time&);
 
 
@@ -38,6 +38,6 @@ class Time {
 
 		int theHour;
 		int theMins;
-		int theSecs;	
-		
+		int theSecs;
+
 };

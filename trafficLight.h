@@ -10,9 +10,9 @@
 class TrafficLight {
 
 	public:
-	
+
 		TrafficLight(Time,char*);
-		TrafficLight(Time,char*,TrafficLight&); 
+		TrafficLight(Time,char*,TrafficLight&);
 
 		void carWantsToCross();
 
