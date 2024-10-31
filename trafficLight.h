@@ -4,8 +4,7 @@
 #define TRAFFICLIGHT_H
 
 #include "time.h"
-
-const int MAX_STRING_LENGTH = 80;
+#include <string>
 
 /*********************** Class TrafficLight ***************************/
 
@@ -13,8 +12,9 @@ class TrafficLight {
 
 	public:
 
-		TrafficLight(Time,char*);
-		TrafficLight(Time,char*,TrafficLight&);
+		// Constructors
+		TrafficLight(Time, string);
+		TrafficLight(Time, string, TrafficLight&);
 
 		void carWantsToCross();
 
@@ -24,19 +24,17 @@ class TrafficLight {
 
 	private:
 
-		/* add members and operations to complete the class yourself */
-		// Delay const
+		// Delay
 		Time delay;
 
-		// Name const
-		char name[MAX_STRING_LENGTH];
+		// Name
+		string name;
 
-		// Pairing const
-		TrafficLight pair;
+		// Pairing
+		TrafficLight* pair;
 
 		// Colour
-		char colour; // r, o, g
-
+		string colour = "red"
 };
 
 #endif
