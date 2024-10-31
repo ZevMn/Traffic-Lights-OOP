@@ -13,35 +13,36 @@ class TrafficLight {
 	public:
 
 		// Constructors
-		TrafficLight(Time, string);
-		TrafficLight(Time, string, TrafficLight&);
+		TrafficLight(Time, std::string);
+		TrafficLight(Time, std::string, TrafficLight&);
 
 		void carWantsToCross();
 
-		void requestPairChangeColour(string new_colour);
+		void requestPairChangeRed();
+		void requestPairChangeGreen();
 
 		static void setTheTime(Time&);
 
-		friend std::ostream& operator << (std::ostream&, TrafficLight*);
+		void display();
 
-		bool request_to_turn_red=false, request_to_turn_orange=false, request_to_turn_green=false;
+		friend std::ostream& operator << (std::ostream&, TrafficLight*);
 
 	private:
 	
-		// Global time
-		static Time current_time;
+		// // Global time
+		// static Time current_time;
 
 		// Delay
 		Time delay_time;
 
 		// Name
-		string name;
+		std::string name;
 
 		// Pairing
 		TrafficLight* pair;
 
 		// Colour
-		string colour = "red";
+		std::string colour = "red";
 };
 
 #endif

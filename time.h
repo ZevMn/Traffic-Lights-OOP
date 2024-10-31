@@ -27,7 +27,6 @@ class Time {
 
 		friend std::ostream& operator << (std::ostream&, Time&);
 
-
 	private:
 
 		int theHour;

@@ -6,80 +6,78 @@
 
 using namespace std;
 
+Time current_time = Time(0,0,0);
+
 
 TrafficLight::TrafficLight(Time delay1, string name1) 
-    : delay(delay1), name(name1), pair(NULL) {}
+    : delay_time(delay1), name(name1), pair(NULL) {}
 
 TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner) 
-    : delay(delay2), name(name2), pair(&partner) {
+    : delay_time(delay2), name(name2), pair(&partner) {
         pair->pair = this;
 
         /* ADD DEFENSIVE PROGRAMMING IN-CASE THEY INPUT THE WRONG THING */
     }
 
 void TrafficLight::carWantsToCross() {
-    /* 2. When a traffic light receives the message that a car wants to pass the crossing it is
-    controlling: */
+
+    cout << "\n*** at " << current_time << " a car wants to cross light "
+         << name << ", with colour: " << colour << endl;
 
     // If the traffic light is red and its partner is green...
     if (colour == "red" && pair->colour == "green") {
-        requestPairChangeColour("red");
+        requestPairChangeRed();
     }
 
     // If the traffic light is red and its partner is also red...
     if (colour == "red" && pair->colour == "red") {
         current_time.add(delay_time);
         colour = "yellow";
+        display();
 
         current_time.add(delay_time);
         colour = "green";
+        display();
     }
-
-    /* 3. When a traffic light is requested to turn to red: */
-    if (request_to_turn_red) {
-
-        if (colour == "green") {
-            current_time.add(delay_time);
-            colour = "yellow";
-            requestPairChangeColour("green");
-        }
-
-        // if (colour == "yellow")
-        current_time.add(delay_time);
-        colour = "red";
-        requestPairChangeColour("green");
-    }
-
-    /* 4. When a traffic light is requested to turn to green: */
-    if (request_to_turn_green) {
-        
-        if (colour == "red") {
-            current_time.add(delay_time);
-            colour = "yellow";
-            requestPairChangeColour("red");
-        }
-
-        // if (colour == "yellow")
-        current_time.add(delay_time);
-        colour = "green";
-    }
-
-
-
 }
 
-void TrafficLight::requestPairChangeColour(string new_colour) {
-    if (new_colour == "red") {
-        request_to_turn_red = true;
-        return;
+void TrafficLight::requestPairChangeRed() {
+
+    if (pair->colour == "green") {
+        current_time.add(pair->delay_time);
+        pair->colour = "yellow";
+        pair->display();
+        pair->requestPairChangeGreen();
     }
-    if (new_colour == "green") {
-        request_to_turn_green = true;
-        return;
+
+    if (pair->colour == "yellow") {
+        current_time.add(pair->delay_time);
+        pair->colour = "red";
+        pair->display();
+        pair->requestPairChangeGreen();
     }
-    request_to_turn_yellow = true;
 }
 
-static void TrafficLight::setTheTime(Time& time) {
+void TrafficLight::requestPairChangeGreen() {
+    if (pair->colour == "red") {
+        current_time.add(pair->delay_time);
+        pair->colour = "yellow";
+        pair->display();
+        pair->requestPairChangeRed();
+    }
+
+    if (pair->colour == "yellow") {
+        current_time.add(pair->delay_time);
+        pair->colour = "green";
+        pair->display();
+    }
+}
+
+void TrafficLight::setTheTime(Time& time) {
     current_time = time;
+}
+
+void TrafficLight::display() {
+    cout << "at " << current_time << " " 
+         << name << " changes colour to " << colour << endl;
 }
