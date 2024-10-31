@@ -9,14 +9,21 @@ using namespace std;
 Time current_time = Time(0,0,0);
 
 
-TrafficLight::TrafficLight(Time delay1, string name1) 
+TrafficLight::TrafficLight(Time delay1, string name1)
     : delay_time(delay1), name(name1), pair(NULL) {}
 
-TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner) 
+TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
     : delay_time(delay2), name(name2), pair(&partner) {
-        pair->pair = this;
 
-        /* ADD DEFENSIVE PROGRAMMING IN-CASE THEY INPUT THE WRONG THING */
+	if (!pair->pair == NULL) {
+	cout << "ERROR: THE TRAFFIC LIGHT ALREADY HAS A PARTNER.";
+	}
+
+	if (pair == this) {
+		cout << "ERROR: A TRAFFIC LIGHT CANNOT BE PARTNERS WITH ITSELF.";
+	}
+
+        pair->pair = this;
     }
 
 void TrafficLight::carWantsToCross() {
@@ -78,6 +85,6 @@ void TrafficLight::setTheTime(Time& time) {
 }
 
 void TrafficLight::display() {
-    cout << "     at " << current_time << " " 
+    cout << "     at " << current_time << " "
          << name << " changes colour to " << colour << endl;
 }
