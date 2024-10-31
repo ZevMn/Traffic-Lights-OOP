@@ -18,19 +18,35 @@ TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
     }
 
 void TrafficLight::carWantsToCross() {
-    // Add delay time to global time
+    /* 2. When a traffic light receives the message that a car wants to pass the crossing it is
+    controlling */
 
+    // If the traffic light is red and its partner is green...
     if (colour == "red" && pair->colour == "green") {
-        // Request collaborating light to turn red
+        // Request the collaborating light to turn red
+        requestPairChangeColour("red");
     }
 
-    /* 2. When a traffic light receives the message that a car wants to pass the crossing it is
-controlling, then
-(a) if it has red colour, and the collaborating light has green colour, it will request the
-collaborating light to turn to red.
-(b) if it has red colour, and the collaborating light has red colour, it will wait for its
-delay time, then turn to yellow, then again it will wait for its delay time, and then
-turn to green. */
+    // If the traffic light is red and its partner is also red...
+    if (colour == "red" && pair->colour == "red") {
+        // Wait delay time
+
+        // Turn yellow
+        // Wait delay time
+        // Turn green
+    }
+
+    /* 3. When a traffic light is requested to turn to red, then
+    (a) if it has green colour it will wait for its delay time and then turn to yellow and
+    request the collaborating light to turn to green.
+    (b) if it has yellow colour, then it will wait for its delay time and then turn to red and
+    request the collaborating light to turn to green. */
 }
 
-static void setTheTime() {}
+void TrafficLight::requestPairChangeColour(string new_colour) {
+
+}
+
+static void setTheTime(Time& time) {
+    current_time = time;
+}
