@@ -23,17 +23,16 @@ void TrafficLight::carWantsToCross() {
 
     // If the traffic light is red and its partner is green...
     if (colour == "red" && pair->colour == "green") {
-        // Request the collaborating light to turn red
         requestPairChangeColour("red");
     }
 
     // If the traffic light is red and its partner is also red...
     if (colour == "red" && pair->colour == "red") {
-        // Wait delay time
+        current_time.add(delay_time);
+        colour = "yellow";
 
-        // Turn yellow
-        // Wait delay time
-        // Turn green
+        current_time.add(delay_time);
+        colour = "green";
     }
 
     /* 3. When a traffic light is requested to turn to red, then
