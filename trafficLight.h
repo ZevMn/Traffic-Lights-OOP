@@ -28,20 +28,13 @@ class TrafficLight {
 		friend std::ostream& operator << (std::ostream&, TrafficLight*);
 
 	private:
-	
-		// // Global time
-		// static Time current_time;
 
-		// Delay
 		Time delay_time;
 
-		// Name
 		std::string name;
 
-		// Pairing
-		TrafficLight* pair;
+		TrafficLight* pair; // Traffic light's partner
 
-		// Colour
 		std::string colour = "red";
 };
 

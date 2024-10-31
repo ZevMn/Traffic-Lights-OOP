@@ -11,7 +11,7 @@ Time::Time() : theHour(0), theMins(0), theSecs(0) {}
 Time::Time(int hours, int mins, int secs) : theHour(hours), theMins(mins), theSecs(secs) {}
 
 /* MEMBER FUNCTION DEFINITIONS */
-void Time::add(/*Time *this,*/ Time& anotherTime) {
+void Time::add(Time& anotherTime) {
 	/* adds seconds to seconds, minutes to minutes and
 	hours to hours, taking into account that
 	a day has 24 hours, an hour has 60 minutes
@@ -25,14 +25,6 @@ void Time::add(/*Time *this,*/ Time& anotherTime) {
     theHour = (h1+h2+(m1+m2+(s1+s2)/60)/60)%24;
 }
 
-//t1.add(t2) -> Time::add(&t1, t2)
-
-// void Time::display(TrafficLight& light) const {
-// 	/* Outputs the current time to the screen 
-// 	in the format theHour:theMins:theSecs */
-// 	cout << "at " << this << " " << light 
-// 	 	 << " changes colour to " << light.colour;
-// }
 
 std::ostream& operator << (std::ostream& outstream, Time& time) {
 	outstream << time.theHour << ":"
