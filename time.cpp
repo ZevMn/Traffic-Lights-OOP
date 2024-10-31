@@ -29,7 +29,7 @@ void Time::add(Time& anotherTime) {
 std::ostream& operator << (std::ostream& outstream, Time& time) {
 	outstream << time.theHour << ":"
 		 << time.theMins << ":"
-		 << time.theSecs << endl;
+		 << time.theSecs;
 
 	return outstream;
 }
