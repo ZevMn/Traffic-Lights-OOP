@@ -34,7 +34,7 @@ class TrafficLight {
 		TrafficLight* pair;
 
 		// Colour
-		string colour = "red"
+		string colour = "red";
 };
 
 #endif
