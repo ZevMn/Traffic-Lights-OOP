@@ -22,6 +22,10 @@ class Time {
 			a day has 24 hours, an hour has 60 minutes
 			and a minute has 60 seconds */
 
+		void display() const;
+			/* outputs the current time to the screen 
+			in the format theHour:theMins:theSecs */
+
 		friend std::ostream& operator << (std::ostream&, Time&);
 
 

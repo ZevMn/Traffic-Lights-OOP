@@ -31,6 +31,15 @@ class Time {
             theHour = (h1+h2+(m1+m2+(s1+s2)/60)/60)%24;
         }
 
+		void display() const {
+			/* Outputs the current time to the screen 
+			in the format theHour:theMins:theSecs */
+
+			cout << theHour << ":"
+				 << theMins << ":"
+				 << theSecs << endl;
+		}
+
 		friend std::ostream& operator << (std::ostream&, Time&);
 
 
