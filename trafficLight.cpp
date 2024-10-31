@@ -78,6 +78,6 @@ void TrafficLight::setTheTime(Time& time) {
 }
 
 void TrafficLight::display() {
-    cout << "at " << current_time << " " 
+    cout << "   at " << current_time << " " 
          << name << " changes colour to " << colour << endl;
 }
