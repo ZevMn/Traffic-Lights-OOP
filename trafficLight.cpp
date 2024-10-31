@@ -21,7 +21,7 @@ TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
 
 void TrafficLight::carWantsToCross() {
 
-    cout << "\n*** at " << current_time << " a car wants to cross light "
+    cout << "\n***  at " << current_time << " a car wants to cross light "
          << name << ", with colour: " << colour << endl;
 
     // If the traffic light is red and its partner is green...
@@ -78,6 +78,6 @@ void TrafficLight::setTheTime(Time& time) {
 }
 
 void TrafficLight::display() {
-    cout << "    at " << current_time << " " 
+    cout << "     at " << current_time << " " 
          << name << " changes colour to " << colour << endl;
 }
