@@ -18,14 +18,21 @@ class TrafficLight {
 
 		void carWantsToCross();
 
+		void requestPairChangeColour(string new_colour);
+
 		static void setTheTime(Time&);
 
 		friend std::ostream& operator << (std::ostream&, TrafficLight*);
 
+		bool request_to_turn_red=false, request_to_turn_orange=false, request_to_turn_green=false;
+
 	private:
+	
+		// Global time
+		static Time current_time;
 
 		// Delay
-		Time delay;
+		Time delay_time;
 
 		// Name
 		string name;

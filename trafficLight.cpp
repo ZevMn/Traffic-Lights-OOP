@@ -19,7 +19,7 @@ TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
 
 void TrafficLight::carWantsToCross() {
     /* 2. When a traffic light receives the message that a car wants to pass the crossing it is
-    controlling */
+    controlling: */
 
     // If the traffic light is red and its partner is green...
     if (colour == "red" && pair->colour == "green") {
@@ -35,17 +35,51 @@ void TrafficLight::carWantsToCross() {
         colour = "green";
     }
 
-    /* 3. When a traffic light is requested to turn to red, then
-    (a) if it has green colour it will wait for its delay time and then turn to yellow and
-    request the collaborating light to turn to green.
-    (b) if it has yellow colour, then it will wait for its delay time and then turn to red and
-    request the collaborating light to turn to green. */
+    /* 3. When a traffic light is requested to turn to red: */
+    if (request_to_turn_red) {
+
+        if (colour == "green") {
+            current_time.add(delay_time);
+            colour = "yellow";
+            requestPairChangeColour("green");
+        }
+
+        // if (colour == "yellow")
+        current_time.add(delay_time);
+        colour = "red";
+        requestPairChangeColour("green");
+    }
+
+    /* 4. When a traffic light is requested to turn to green: */
+    if (request_to_turn_green) {
+        
+        if (colour == "red") {
+            current_time.add(delay_time);
+            colour = "yellow";
+            requestPairChangeColour("red");
+        }
+
+        // if (colour == "yellow")
+        current_time.add(delay_time);
+        colour = "green";
+    }
+
+
+
 }
 
 void TrafficLight::requestPairChangeColour(string new_colour) {
-
+    if (new_colour == "red") {
+        request_to_turn_red = true;
+        return;
+    }
+    if (new_colour == "green") {
+        request_to_turn_green = true;
+        return;
+    }
+    request_to_turn_yellow = true;
 }
 
-static void setTheTime(Time& time) {
+static void TrafficLight::setTheTime(Time& time) {
     current_time = time;
 }
