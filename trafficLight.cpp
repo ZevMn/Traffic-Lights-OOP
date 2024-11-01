@@ -17,7 +17,7 @@ TrafficLight::TrafficLight(Time delay1, string name1)
 TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
     : delay_time(delay2), name(name2), pair(&partner) {
 
-	if (!pair->pair == NULL) {
+	if (!pair->pair == nullptr) {
 	    cout << "ERROR: THE TRAFFIC LIGHT ALREADY HAS A PARTNER.";
         exit(1);
 	}
