@@ -10,7 +10,7 @@ using namespace std;
 Time::Time() : theHour(0), theMins(0), theSecs(0) {}
 Time::Time(int hours, int mins, int secs) : theHour(hours), theMins(mins), theSecs(secs) {}
 
-/* MEMBER FUNCTION DEFINITIONS */
+/* MEMBER FUNCTION 1: INCREMENT THE TIME */
 void Time::add(Time& anotherTime) {
 	/* adds seconds to seconds, minutes to minutes and
 	hours to hours, taking into account that
@@ -24,8 +24,9 @@ void Time::add(Time& anotherTime) {
     theMins = (m1+m2+((s1+s2)/60))%60;
     theHour = (h1+h2+(m1+m2+(s1+s2)/60)/60)%24;
 }
+/* END OF MEMBER FUNCTION 1 */
 
-
+/* MEMBER FUNCTION 2: OVERLOAD << OPERATOR TO OUTPUT TIME IN CORRECT FORMAT */
 std::ostream& operator << (std::ostream& outstream, Time& time) {
 	outstream << time.theHour << ":"
 		 << time.theMins << ":"
@@ -33,3 +34,4 @@ std::ostream& operator << (std::ostream& outstream, Time& time) {
 
 	return outstream;
 }
+/* END OF MEMBER FUNCTION 2 */

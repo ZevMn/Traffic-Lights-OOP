@@ -34,11 +34,12 @@ class TrafficLight {
 		/* Function to display the time */
 		void display();
 
+		/* Function to overload << operator */
 		friend std::ostream& operator << (std::ostream&, TrafficLight*);
 
 	private:
 
-		/* Attributes of a traffic light */
+		/* Attributes */
 		Time delay_time;
 
 		std::string name;
