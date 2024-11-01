@@ -31,7 +31,7 @@ TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
     }
 /* END OF CONSTRUCTOR 2 */
 
-/* FUNCTION TO SIMULATE A CAR APPROACHING THE CROSSING */
+/* MEMBER FUNCTION 1: A CAR APPROACHES THE CROSSING */
 void TrafficLight::carWantsToCross() {
 
     cout << "\n***  at " << current_time << " a car wants to cross light "
@@ -51,8 +51,9 @@ void TrafficLight::carWantsToCross() {
         change_green();
     }
 }
-/**/
+/* END OF MEMBER FUNCTION 1 */
 
+/* MEMBER FUNCTION 2: REQUEST TRAFFIC LIGHT'S PARTNER TO TURN RED */
 void TrafficLight::requestPairChangeRed() {
 
     if (pair->colour == "green") {
@@ -67,7 +68,9 @@ void TrafficLight::requestPairChangeRed() {
         pair->requestPairChangeGreen();
     }
 }
+/* END OF MEMBER FUNCTION 2 */
 
+/* MEMBER FUNCTION 3: REQUEST TRAFFIC LIGHT'S PARTNER TO TURN GREEN */
 void TrafficLight::requestPairChangeGreen() {
     if (pair->colour == "red") {
         current_time.add(pair->delay_time);
@@ -80,27 +83,38 @@ void TrafficLight::requestPairChangeGreen() {
         pair->change_green();
     }
 }
+/* END OF MEMBER FUNCTON 3 */
 
+/* MEMBER FUNCTION 4: CHANGE RED */
 void TrafficLight::change_red() {
     colour = "red";
     display();
 }
+/* END OF MEMBER FUNCTION 4 */
 
+/* MEMBER FUNCTION 5: CHANGE YELLOW */
 void TrafficLight::change_yellow() {
     colour = "yellow";
     display();
 }
+/* END OF MEMBER FUNCTION 5 */
 
+/* MEMBER FUNCTION 6: CHANGE GREEN */
 void TrafficLight::change_green() {
     colour = "green";
     display();
 }
+/* END OF MEMBER FUNCTION 6 */
 
+/* MEMBER FUNCTION 7: SET THE TIME */
 void TrafficLight::setTheTime(Time& time) {
     current_time = time;
 }
+/* END OF MEMBER FUNCTION 7 */
 
+/* MEMBER FUNCTION 8: DISPLAY THE TIME */
 void TrafficLight::display() {
     cout << "     at " << current_time << " "
          << name << " changes colour to " << colour << endl;
 }
+/* END OF MEMBER FUNCTION 8 */
