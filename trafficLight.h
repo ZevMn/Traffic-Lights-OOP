@@ -28,7 +28,7 @@ class TrafficLight {
 		void change_green();
 		void change_red();
 
-		/*  */
+		/* Function to set the time */
 		static void setTheTime(Time&);
 
 		/* Function to display the time */
