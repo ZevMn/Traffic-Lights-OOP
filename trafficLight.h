@@ -19,6 +19,11 @@ class TrafficLight {
 		/* Function for when car approaches crossing */
 		void carWantsToCross();
 
+		/* Function to overload << operator */
+		friend std::ostream& operator << (std::ostream&, TrafficLight*);
+
+	private:
+
 		/* Functions to request the traffic light's partner to change colour */
 		void requestPairChangeRed();
 		void requestPairChangeGreen();
@@ -33,11 +38,6 @@ class TrafficLight {
 
 		/* Function to display the time */
 		void display();
-
-		/* Function to overload << operator */
-		friend std::ostream& operator << (std::ostream&, TrafficLight*);
-
-	private:
 
 		/* Attributes */
 		Time delay_time;
