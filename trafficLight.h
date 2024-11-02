@@ -19,6 +19,9 @@ class TrafficLight {
 		/* Function for when car approaches crossing */
 		void carWantsToCross();
 
+		/* Function to set the time */
+		static void setTheTime(Time&);
+
 		/* Function to overload << operator */
 		friend std::ostream& operator << (std::ostream&, TrafficLight*);
 
@@ -32,9 +35,6 @@ class TrafficLight {
 		void change_yellow();
 		void change_green();
 		void change_red();
-
-		/* Function to set the time */
-		static void setTheTime(Time&);
 
 		/* Function to display the time */
 		void display();
