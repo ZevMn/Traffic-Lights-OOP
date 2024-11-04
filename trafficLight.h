@@ -22,8 +22,11 @@ class TrafficLight {
 		/* Function to set the time */
 		static void setTheTime(Time&);
 
-		/* Function to overload << operator */
+		/* Functions to overload << operator */
 		friend std::ostream& operator << (std::ostream&, TrafficLight*);
+
+		enum colours {red, yellow, green};
+		friend std::ostream &operator<<(std::ostream& out, colours& colour);
 
 	private:
 
@@ -36,7 +39,7 @@ class TrafficLight {
 		void change_green();
 		void change_red();
 
-		/* Function to display the time */
+		/* Function to display the time message */
 		void display();
 
 		/* Attributes */
@@ -47,8 +50,8 @@ class TrafficLight {
 		std::string name;
 
 		TrafficLight* pair; // Traffic light's partner
-		
-		std::string colour = "red";
+
+		colours colour = red;
 };
 
 #endif
