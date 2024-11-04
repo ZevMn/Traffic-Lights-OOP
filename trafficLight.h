@@ -40,6 +40,8 @@ class TrafficLight {
 		void display();
 
 		/* Attributes */
+		static Time current_time;
+
 		Time delay_time;
 
 		std::string name;

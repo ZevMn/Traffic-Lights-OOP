@@ -6,7 +6,8 @@
 
 using namespace std;
 
-Time current_time = Time(0,0,0);
+/* INITIALISING THE CURRENT TIME VARIABLE */
+Time TrafficLight::current_time(0,0,0);
 
 /* CONSTRUCTOR 1 */
 TrafficLight::TrafficLight(Time delay1, string name1)
