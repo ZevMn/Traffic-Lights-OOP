@@ -46,10 +46,10 @@ void TrafficLight::carWantsToCross() {
     // If the traffic light is red and its partner is also red...
     if (colour == red && pair->colour == red) {
         current_time.add(delay_time);
-        change_yellow();
+        change_colour(yellow);
 
         current_time.add(delay_time);
-        change_green();
+        change_colour(green);
     }
 }
 /* END OF MEMBER FUNCTION 1 */
@@ -59,13 +59,13 @@ void TrafficLight::requestPairChangeRed() {
 
     if (pair->colour == green) {
         current_time.add(pair->delay_time);
-        pair->change_yellow();
+        pair->change_colour(yellow);
         pair->requestPairChangeGreen();
     }
 
     if (pair->colour == yellow) {
         current_time.add(pair->delay_time);
-        pair->change_red();
+        pair->change_colour(red);
         pair->requestPairChangeGreen();
     }
 }
@@ -73,54 +73,42 @@ void TrafficLight::requestPairChangeRed() {
 
 /* MEMBER FUNCTION 3: REQUEST TRAFFIC LIGHT'S PARTNER TO TURN GREEN */
 void TrafficLight::requestPairChangeGreen() {
+
     if (pair->colour == red) {
         current_time.add(pair->delay_time);
-        pair->change_yellow();
+        pair->change_colour(yellow);
         pair->requestPairChangeRed();
     }
 
     if (pair->colour == yellow) {
         current_time.add(pair->delay_time);
-        pair->change_green();
+        pair->change_colour(green);
     }
 }
 /* END OF MEMBER FUNCTON 3 */
 
-/* MEMBER FUNCTION 4: CHANGE RED */
-void TrafficLight::change_red() {
-    colour = red;
+/* MEMBER FUNCTION 4: CHANGE COLOUR OF TRAFFIC LIGHT */
+void TrafficLight::change_colour(Colours new_colour) {
+    colour = new_colour;
     display();
 }
 /* END OF MEMBER FUNCTION 4 */
 
-/* MEMBER FUNCTION 5: CHANGE YELLOW */
-void TrafficLight::change_yellow() {
-    colour = yellow;
-    display();
-}
-/* END OF MEMBER FUNCTION 5 */
-
-/* MEMBER FUNCTION 6: CHANGE GREEN */
-void TrafficLight::change_green() {
-    colour = green;
-    display();
-}
-/* END OF MEMBER FUNCTION 6 */
-
-/* MEMBER FUNCTION 7: SET THE TIME */
+/* MEMBER FUNCTION 5: SET THE TIME */
 void TrafficLight::setTheTime(Time& time) {
     current_time = time;
 }
-/* END OF MEMBER FUNCTION 7 */
+/* END OF MEMBER FUNCTION 5 */
 
-/* MEMBER FUNCTION 8: DISPLAY THE TIME MESSAGE */
+/* MEMBER FUNCTION 6: DISPLAY THE TIME MESSAGE */
 void TrafficLight::display() {
     cout << "     at " << current_time << " "
          << name << " changes colour to " << colour << endl;
 }
-/* END OF MEMBER FUNCTION 8 */
+/* END OF MEMBER FUNCTION 6 */
 
-std::ostream& operator<<(std::ostream& out, TrafficLight::colours& colour) {
+/* MEMBER FUNCTION 7: OVERLOAD << OPERATOR FOR TYPE "Colours" */
+std::ostream& operator<<(std::ostream& out, TrafficLight::Colours colour) {
   	switch (colour) {
   		case TrafficLight::red: out << "red"; break;
 		case TrafficLight::yellow: out << "yellow"; break;
@@ -128,3 +116,4 @@ std::ostream& operator<<(std::ostream& out, TrafficLight::colours& colour) {
     }
 		return out;
 }
+/* END OF MEMBER FUNCTION 7 */
