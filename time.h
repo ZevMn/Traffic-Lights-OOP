@@ -1,5 +1,9 @@
 /* time.h - header file for the class Time */
 
+/* Author: Zev Menachemson 
+ * Last Edited: 05/11/2024
+ */
+
 #ifndef TIME_H
 #define TIME_H
 

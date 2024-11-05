@@ -1,5 +1,9 @@
 /* trafficLights.h - header file for the class TrafficLight */
 
+/* Author: Zev Menachemson 
+ * Last Edited: 05/11/2024
+ */
+
 #ifndef TRAFFICLIGHT_H
 #define TRAFFICLIGHT_H
 

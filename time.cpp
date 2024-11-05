@@ -1,5 +1,9 @@
 /* time.cpp - Implementation file for the class Time */
 
+/* Author: Zev Menachemson 
+ * Last Edited: 05/11/2024
+ */
+
 #include <iostream>
 #include "time.h"
 

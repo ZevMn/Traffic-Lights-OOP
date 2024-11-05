@@ -1,5 +1,9 @@
 /* trafficLight.cpp - Implementation file for the class TrafficLight */
 
+/* Author: Zev Menachemson 
+ * Last Edited: 05/11/2024
+ */
+
 #include <iostream>
 #include <string>
 #include "trafficLight.h"
@@ -27,9 +31,8 @@ TrafficLight::TrafficLight(Time delay2, string name2, TrafficLight& partner)
 		cout << "ERROR: A TRAFFIC LIGHT CANNOT BE PARTNERS WITH ITSELF.";
         exit(1);
 	}
-
-        pair->pair = this;
-    }
+    pair->pair = this;
+}
 /* END OF CONSTRUCTOR 2 */
 
 /* MEMBER FUNCTION 1: A CAR APPROACHES THE CROSSING */
