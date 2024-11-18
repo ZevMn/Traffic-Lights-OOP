@@ -20,7 +20,9 @@ class TrafficLight {
 
 		/* 
 		 * Parameterised constructor to be called for creating an instance
-		 * of the first traffic light in a given pair.
+		 * of the first traffic light in a given pair. Inititates the pair attribute
+		 * to NULL. This constructor should be called for the first instance of a traffic light
+		 * in a pair.
 		 *
 		 * @param delay1 The delay time associated with the first traffic light in the pair.
 		 * @param name1 The name of the first traffic light in the pair.
@@ -57,31 +59,63 @@ class TrafficLight {
 		 */
 		static void setTheTime(Time& time);
 
+		/* enum decleration for the three possible traffic light colours */
 		enum Colours {red, yellow, green};
+
+		/*
+		 * Overloads the << operator for the colour attribute.
+		 *
+		 * @param out A reference to the output stream.
+		 * @param colour The colour to display.
+		 * 
+		 * @return A reference to the output stream.
+		 */
 		friend std::ostream &operator<<(std::ostream& out, Colours colour);
 
 	private:
 
-		/* Functions to request the traffic light's partner to change colour */
+		/* 
+		 * Sends a message to the partner trafflic light with a request to change
+		 * colour to red and increments the time accordingly.
+		 * The actions initiated by this function depend on the current colour
+		 * of the partner traffic light.
+		 */
 		void requestPairChangeRed();
+
+		/*
+		 * Sends a message to the partner trafflic light with a request to change
+		 * colour to green and increments the time accordingly.
+		 * The actions initiated by this function depend on the current colour
+		 * of the partner traffic light.
+		 */
 		void requestPairChangeGreen();
 
-		/* Functions to change the traffic light's colour */
+		/*
+		 * Changes the traffic light's colour and displays a corresponding message.
+		 * This method should only be called within carWantsToCross(), requestPairChangeRed()
+		 * or requestPairChangeGreen(), as in this implementation it doesn't increment the global time
+		 * itself.
+		 *
+		 * @param new_colour The colour to change this traffic light to.
+		 */
 		void change_colour(Colours new_colour);
 
-		/* Function to display the time message */
+		/* 
+		 * Displays a time message specifying the traffic light, new colour and the global time
+		 * at which the change occured.
+		 */
 		void display();
 
 		/* Attributes */
-		static Time current_time;
+		static Time current_time; // The shared global time.
 
-		Time delay_time;
+		Time delay_time; // The delay time specific to this traffic light.
 
-		std::string name;
+		std::string name; // The name of this traffic light.
 
-		TrafficLight* pair; // Traffic light's partner
+		TrafficLight* pair; // A pointer to the partner of this traffic light
 
-		Colours colour = red;
+		Colours colour = red; // The colour of this traffic light. Should only be accessed through member functions.
 };
 
 #endif
